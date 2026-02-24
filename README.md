@@ -5,6 +5,7 @@ A full-stack AI-powered chat application with a React frontend and Node.js backe
 ## Quick Start
 
 ### Prerequisites
+
 - Node.js (v14+)
 - npm (v6+)
 - OpenAI or Google Generative AI API key
@@ -12,6 +13,7 @@ A full-stack AI-powered chat application with a React frontend and Node.js backe
 ### Setup & Run
 
 **1. Backend Setup**
+
 ```bash
 cd backend
 npm install
@@ -26,6 +28,7 @@ npm start
 ```
 
 **2. Frontend Setup** (in a new terminal)
+
 ```bash
 cd frontend
 npm install
@@ -77,7 +80,7 @@ AI-ChatBot/
 ✅ Auto-scrolling to latest messages  
 ✅ Loading indicators  
 ✅ Responsive Tailwind CSS design  
-✅ UUID-based session tracking  
+✅ UUID-based session tracking
 
 ### Frontend Key Files
 
@@ -105,17 +108,19 @@ AI-ChatBot/
 ✅ Document-based knowledge base  
 ✅ Rate limiting (100 req/15min)  
 ✅ CORS enabled  
-✅ Environment-based configuration  
+✅ Environment-based configuration
 
 ### Backend API Endpoints
 
 **POST /api/chat** - Send message and get AI response
+
 ```json
 Request: { "sessionId": "xxx", "message": "Hello" }
 Response: { "reply": "Hi! How can I help?" }
 ```
 
 **GET /api/conversations/:sessionId** - Get conversation history
+
 ```json
 Response: [
   { "role": "user", "content": "...", "created_at": "..." },
@@ -124,6 +129,7 @@ Response: [
 ```
 
 **GET /api/sessions** - Get all sessions
+
 ```json
 Response: [{ "id": "...", "created_at": "...", "updated_at": "..." }]
 ```
@@ -144,12 +150,14 @@ Response: [{ "id": "...", "created_at": "...", "updated_at": "..." }]
 ### Environment Variables (.env in backend/)
 
 **Required:**
+
 ```env
 OPENAI_API_KEY=sk-...        # OR
 GOOGLE_API_KEY=...
 ```
 
 **Optional:**
+
 ```env
 PORT=5000
 NODE_ENV=development
@@ -177,7 +185,7 @@ The AI references these when answering relevant questions.
 SQLite database auto-created at `backend/database.sqlite`
 
 **Sessions table** - Stores chat sessions  
-**Messages table** - Stores conversation messages  
+**Messages table** - Stores conversation messages
 
 Tables auto-created on first run.
 
@@ -186,6 +194,7 @@ Tables auto-created on first run.
 ## Available Commands
 
 ### Frontend
+
 ```bash
 cd frontend
 npm start          # Development server
@@ -194,6 +203,7 @@ npm test           # Run tests
 ```
 
 ### Backend
+
 ```bash
 cd backend
 npm start          # Start server
@@ -205,20 +215,24 @@ node src/server.js # Direct run
 ## Common Issues & Solutions
 
 ### Backend won't start
+
 - Check `.env` file exists with API key
 - Verify API key is valid
 - Try different port: `PORT=5001 npm start`
 
 ### API Connection Errors
+
 - Ensure backend is running on port 5000
 - Check browser console for error details
 - Verify `services/api.js` has correct backend URL
 
 ### Rate Limited
+
 - API limits to 100 requests per 15 minutes
 - Wait 15 minutes or increase limit in `src/middlewares/rateLimiter.js`
 
 ### Port Already in Use
+
 ```bash
 # Windows
 netstat -ano | findstr :5000
@@ -234,6 +248,7 @@ kill -9 <PID>
 ## Deployment
 
 ### Heroku (Backend)
+
 ```bash
 heroku create your-app-name
 heroku config:set OPENAI_API_KEY=your_key
@@ -241,12 +256,14 @@ git push heroku main
 ```
 
 ### Vercel (Frontend)
+
 ```bash
 npm install -g vercel
 vercel
 ```
 
 ### Other Platforms
+
 Set environment variables through platform dashboard and deploy accordingly.
 
 ---
@@ -273,12 +290,14 @@ Set environment variables through platform dashboard and deploy accordingly.
 ## Technologies Used
 
 **Frontend:**
+
 - React 19
 - Tailwind CSS
 - Axios
 - UUID
 
 **Backend:**
+
 - Node.js
 - Express
 - SQLite3
@@ -293,9 +312,10 @@ Set environment variables through platform dashboard and deploy accordingly.
 ✅ CORS enabled for frontend domain  
 ✅ Rate limiting to prevent abuse  
 ✅ Input validation on backend  
-✅ Session IDs are UUIDs (unpredictable)  
+✅ Session IDs are UUIDs (unpredictable)
 
 **Production Tips:**
+
 - Use environment variables for all secrets
 - Enable HTTPS
 - Set strict CORS origins
@@ -328,21 +348,26 @@ Set environment variables through platform dashboard and deploy accordingly.
 ## Customization
 
 ### Change AI Model
+
 Edit `backend/src/controllers/chatController.js` to use different models from OpenAI or Google.
 
 ### Adjust Rate Limits
+
 Edit `backend/src/middlewares/rateLimiter.js`:
+
 ```javascript
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,  // Time window
-  max: 100,                   // Max requests
+  windowMs: 15 * 60 * 1000, // Time window
+  max: 100, // Max requests
 });
 ```
 
 ### Update UI Design
+
 Edit Tailwind classes in React components or `tailwind.config.js`
 
 ### Add Features
+
 - User authentication
 - Message search
 - Typing indicators
@@ -354,13 +379,16 @@ Edit Tailwind classes in React components or `tailwind.config.js`
 ## Testing
 
 ### Frontend
+
 ```bash
 cd frontend
 npm test
 ```
 
 ### Backend
+
 Add test files and use Jest/Mocha:
+
 ```bash
 cd backend
 npm test

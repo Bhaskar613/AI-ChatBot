@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api";
+const API = "https://ai-chatbot-backend-pss2.onrender.com";
 
 export const sendMessageAPI = (sessionId, message) => {
   return axios.post(`${API}/chat`, { sessionId, message });
